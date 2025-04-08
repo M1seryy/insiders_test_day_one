@@ -23,8 +23,8 @@ export default function TabContainer() {
           { id: 3, label: "Telefonie", url: "/telefonie", pinned: false },
           { id: 4, label: "Accounting", url: "/accounting", pinned: true },
           { id: 5, label: "Verkauf", url: "/verkauf", pinned: false },
-          { id: 6, label: "Statistik", url: "/statistik", pinned: false },
-          { id: 7, label: "Post Office", url: "/post-office", pinned: false },
+          { id: 6, label: "Statistik", url: "/statistik", pinned: true },
+          { id: 7, label: "Post Office", url: "/post-office", pinned: true },
           {
             id: 8,
             label: "Administration",
@@ -53,6 +53,12 @@ export default function TabContainer() {
     localStorage.setItem("tabs", JSON.stringify(tabs));
   }, [tabs]);
 
+  const onTabHandler = (id) => {
+    const result = tabs.filter((item) => {
+      return item.id != id;
+    });
+    setTabs(result);
+  };
   const handleTogglePin = (id) => {
     setTabs((prev) =>
       prev.map((tab) => (tab.id === id ? { ...tab, pinned: !tab.pinned } : tab))
@@ -96,7 +102,6 @@ export default function TabContainer() {
     visibleOnly.splice(fromIndex, 1);
     visibleOnly.splice(toIndex, 0, dragged);
 
-    // тепер замінюємо в оригінальному масиві
     const updatedTabs = tabs.map((tab) => {
       const matchIndex = visibleIds.indexOf(tab.id);
       if (matchIndex !== -1) {
@@ -115,6 +120,7 @@ export default function TabContainer() {
           {visibleTabs.map((item, index) => (
             <div key={item.id} ref={(el) => (tabRefs.current[index] = el)}>
               <Tabs
+                onFilter={onTabHandler}
                 item={item}
                 index={index}
                 moveTab={moveTab}

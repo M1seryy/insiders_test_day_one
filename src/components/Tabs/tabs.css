@@ -2,16 +2,17 @@
 
 .tabItem {
   transition: 300ms ease-in-out;
-  min-width: 145px;
+  width: 145px;
   height: 48px;
   background-color: #ffffff;
   display: flex;
   align-items: center;
+  gap: 15px;
   justify-content: center;
 }
+
 .tab--pinned {
   transition: 300ms ease-in-out;
-
   background-color: #f1f5f8;
   min-width: 145px;
   height: 48px;
@@ -58,4 +59,22 @@
   padding: 4px;
   cursor: grab;
   user-select: none;
+}
+.icon_delete {
+  transition: 300ms ease-in-out;
+  color: #ffffff;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 10px;
+  border-radius: 100px;
+  padding: 5px;
+  width: 16px;
+  height: 16px;
+  background-color: red;
+  font-family: "Poppins", sans-serif;
+}
+.icon_delete:hover {
+  opacity: 1;
 }

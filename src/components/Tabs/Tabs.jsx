@@ -6,7 +6,7 @@ import { useDrag, useDrop } from "react-dnd";
 import "./tabs.css";
 import { ItemTypes } from "../../dndTypes/types";
 
-export default function Tabs({ item, index, moveTab, onPin }) {
+export default function Tabs({ item, index, moveTab, onPin, onFilter }) {
   const ref = useRef(null);
   const [showMenu, setShowMenu] = useState(false);
 
@@ -39,8 +39,16 @@ export default function Tabs({ item, index, moveTab, onPin }) {
     setShowMenu(false);
   };
 
+  const togglePin = () => {
+    setShowMenu(!showMenu);
+  };
+
   return (
-    <div ref={ref} className={`${item.pinned ? "tab--pinned" : "tabItem"}`}>
+    <div
+      onClick={() => togglePin()}
+      ref={ref}
+      className={`${item.pinned ? "tab--pinned" : "tabItem"}`}
+    >
       <span
         className="tabItem_text"
         onClick={() => (window.location.href = item.url)}
@@ -48,16 +56,19 @@ export default function Tabs({ item, index, moveTab, onPin }) {
         {item.label}
       </span>
 
-      <div {...handlers} className="swipe-zone">
-        ☰
-      </div>
-
       {showMenu && (
         <div className="tab-menu">
           <button className="pinButton" onClick={handlePin}>
             {item.pinned ? "Відкріпити" : "Закріпити"}
           </button>
         </div>
+      )}
+      {!item.pinned ? (
+        <div onClick={() => onFilter(item.id)} className="icon_delete">
+          X
+        </div>
+      ) : (
+        ""
       )}
     </div>
   );
