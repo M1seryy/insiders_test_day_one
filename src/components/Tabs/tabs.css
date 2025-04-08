@@ -1,6 +1,7 @@
 /** @format */
 
 .tabItem {
+  transition: 300ms ease-in-out;
   min-width: 145px;
   height: 48px;
   background-color: #ffffff;
@@ -9,6 +10,8 @@
   justify-content: center;
 }
 .tab--pinned {
+  transition: 300ms ease-in-out;
+
   background-color: #f1f5f8;
   min-width: 145px;
   height: 48px;
@@ -29,4 +32,25 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   z-index: 10;
   min-width: 150px;
+}
+.tab-menu {
+  width: 155px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #aeb6ce33;
+  position: absolute;
+  top: 60px;
+  background: white;
+  padding: 4px 8px;
+  z-index: 100;
+}
+.pinButton {
+  color: #7f858d;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  background-color: transparent;
 }
