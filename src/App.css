@@ -1,0 +1,9 @@
+/** @format */
+
+.App {
+  width: 100%;
+  padding: 69px 62px 69px 62px;
+}
+* {
+  box-sizing: border-box;
+}
