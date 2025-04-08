@@ -40,8 +40,8 @@ export default function TabContainer() {
     tabRefs.current = tabRefs.current.slice(0, tabs.length);
 
     tabs.forEach((tab, index) => {
-      const width = tabRefs.current[index]?.offsetWidth || 100;
-      if (tab.pinned || usedWidth + width < containerWidth - 36) {
+      const width = tabRefs.current[index]?.offsetWidth || 145;
+      if (tab.pinned || usedWidth + width < containerWidth - 60) {
         visible.push(tab);
         usedWidth += width;
       } else {
