@@ -54,3 +54,8 @@
   font-family: "Poppins", sans-serif;
   background-color: transparent;
 }
+.swipe-zone {
+  padding: 4px;
+  cursor: grab;
+  user-select: none;
+}
